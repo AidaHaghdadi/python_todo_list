@@ -16,6 +16,14 @@ while user_choose != 4 :
         tasks.append(user_task)
         print("Task added!\n")
 
+    elif user_choose == 2 :
+        if len(tasks) == 0:
+            print("No tasks found!")
+        else :    
+            print("\nTasks list :")
+            for index, task in enumerate(tasks):
+                print(f"{index + 1}. {task}")
+
 if user_choose == 4 :
     print("Goodby:)")
 
