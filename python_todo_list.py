@@ -23,7 +23,20 @@ while user_choose != 4 :
             print("\nTasks list :")
             for index, task in enumerate(tasks):
                 print(f"{index + 1}. {task}")
+    
+    elif user_choose == 3 :
+        if len(tasks) != 0 :
+            for index, task in enumerate(tasks):
+                print(f"{index + 1}. {task}")
+            task_number_for_delete = int(input("\nEnter task number to delete :"))
+            task_number_for_delete -= 1
+            tasks.pop(task_number_for_delete)
+            print("Task deleted!\n")
+            print("New tasks list :")
+            for index, task in enumerate(tasks):
+                print(f"{index + 1}. {task}")
+        else : 
+            print("No tasks list found!")
 
 if user_choose == 4 :
     print("Goodby:)")
-
