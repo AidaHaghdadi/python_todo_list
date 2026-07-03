@@ -23,3 +23,8 @@ python main.py
 ## Project Status
 
 Completed as a beginner Python practice project.
+
+## Author
+
+**Aida Haghdadi**
+
