@@ -1,3 +1,3 @@
-class TaسkManager:
+class TaskManager:
     def __init__ (self):
         self.tasks = []
