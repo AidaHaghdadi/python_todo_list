@@ -13,6 +13,7 @@ def show_menu():
     print("8-Exit")
 
 
+user_task = TaskManager()
 user_selection = None
 while user_selection != 8 :
     show_menu()
@@ -21,5 +22,18 @@ while user_selection != 8 :
     except ValueError:
         print("Invalid Input!")
         continue
+    
+    # Add book
+    if user_selection == 1:
+        task_title = input("Enter your task :").capitalize()
+        task_description = input("Enter description (optional): ").capitalize
+
+        task = Task(task_title, task_description)
+        user_task.add_task(task)
+        print("Task added!")
+
+    elif user_selection == 8:
+        print("Exit Program.")
+
     else:
         print("Invalid Choice Number!")
