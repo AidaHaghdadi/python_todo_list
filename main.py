@@ -26,11 +26,21 @@ while user_selection != 8 :
     # Add book
     if user_selection == 1:
         task_title = input("Enter your task :").capitalize()
-        task_description = input("Enter description (optional): ").capitalize
+        task_description = input("Enter description (optional): ").capitalize()
 
         task = Task(task_title, task_description)
         user_task.add_task(task)
         print("Task added!")
+
+    elif user_selection == 2:
+        result = user_task.show_tasks()
+        if result:
+            print("\nTask List:")
+            for index, task_info in enumerate(result):
+                print(f"{index + 1}. {task_info}")
+        else:
+            print("Task list is empty!")
+        
 
     elif user_selection == 8:
         print("Exit Program.")

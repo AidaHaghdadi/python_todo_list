@@ -5,4 +5,13 @@ class Task:
         self.is_completed = False
 
     def __str__(self):
-        return self.title
+        status = self.get_status()
+        
+        if self.description:
+            return f"{self.title} | {status} \n  *description: {self.description}"
+        return f"{self.title} | {status}"
+
+    def get_status(self):
+        if self.is_completed:
+            return "Completed"
+        return "Pending"
