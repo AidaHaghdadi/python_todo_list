@@ -12,6 +12,17 @@ def show_menu():
     print("7-Delete Task")
     print("8-Exit")
 
+def print_tasks():
+    result = user_task.show_tasks()
+
+    if result:
+        print("\nTask List:")
+        for index, task in enumerate(result):
+            print(f"{index + 1}. {task}")
+        return True
+    else:
+        print("Task list is empty!")
+        return False
 
 user_task = TaskManager()
 user_selection = None
@@ -23,7 +34,7 @@ while user_selection != 8 :
         print("Invalid Input!")
         continue
     
-    # Add book
+    # Add task
     if user_selection == 1:
         task_title = input("Enter your task :").capitalize()
         task_description = input("Enter description (optional): ").capitalize()
@@ -32,15 +43,32 @@ while user_selection != 8 :
         user_task.add_task(task)
         print("Task added!")
 
+    # Show task
     elif user_selection == 2:
-        result = user_task.show_tasks()
-        if result:
-            print("\nTask List:")
-            for index, task_info in enumerate(result):
-                print(f"{index + 1}. {task_info}")
+        print_tasks()
+        
+    # Edit task
+    elif user_selection == 3:
+        if user_task.tasks :
+            print_tasks()
+            try:
+                task_number = int(input("Enter the number of task that you want to edit:"))
+            except ValueError:
+                print("Invalid Input!")
+                continue
+
+            new_title = input("New title (leave blank to keep current):").capitalize()
+            new_description = input("New description (leave blank to keep current):").capitalize()
+
+            result = user_task.edit_task(task_number, new_title, new_description)
+            if result == True:
+                print("Task updated successfully.")
+
+            else:
+                print("Invalid Choice Number!")
         else:
             print("Task list is empty!")
-        
+
 
     elif user_selection == 8:
         print("Exit Program.")
