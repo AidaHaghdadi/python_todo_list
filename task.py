@@ -8,7 +8,7 @@ class Task:
         status = self.get_status()
         
         if self.description:
-            return f"{self.title} | {status} \n  *description: {self.description}"
+            return f"{self.title} | {self.description} | {status}"
         return f"{self.title} | {status}"
 
     def get_status(self):

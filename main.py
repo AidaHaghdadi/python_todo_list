@@ -12,7 +12,7 @@ def show_menu():
     print("7-Delete Task")
     print("8-Exit")
 
-def print_tasks():
+def print_tasks(tasks):
     result = user_task.show_tasks()
 
     if result:
@@ -45,12 +45,12 @@ while user_selection != 8 :
 
     # Show task
     elif user_selection == 2:
-        print_tasks()
+        print_tasks(user_task.tasks)
         
     # Edit task
     elif user_selection == 3:
         if user_task.tasks :
-            print_tasks()
+            print_tasks(user_task.tasks)
             try:
                 task_number = int(input("Enter the number of task that you want to edit:"))
             except ValueError:
@@ -69,6 +69,18 @@ while user_selection != 8 :
         else:
             print("Task list is empty!")
 
+    # Search task
+    elif user_selection == 4:
+        if user_task.tasks:
+            task_title = input("Enter your task title :").capitalize()
+            result = user_task.search_task(task_title)
+
+            if result:
+                print_tasks(result)
+            else:
+                print("No task fount!")
+        else:
+            print("Task list is empty!")
 
     elif user_selection == 8:
         print("Exit Program.")

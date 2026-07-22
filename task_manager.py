@@ -21,3 +21,12 @@ class TaskManager:
             return True
         else:
             return False
+    
+    # Search task function
+    def search_task(self, task_title):
+        result = []
+
+        for task in self.tasks:
+            if task_title == task.title:
+                result.append(task)
+        return result
