@@ -30,3 +30,18 @@ class TaskManager:
             if task_title == task.title:
                 result.append(task)
         return result
+    
+    # Complete task function
+    def complete_task(self, comp_task):
+        if 1<= comp_task <= len(self.tasks):
+            task_for_comp = self.tasks[comp_task - 1]
+
+            if task_for_comp.is_completed:
+                return "Already complete"
+
+            task_for_comp.is_completed = True
+            return True
+
+        else:
+            return False
+

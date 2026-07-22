@@ -36,7 +36,13 @@ while user_selection != 8 :
     
     # Add task
     if user_selection == 1:
-        task_title = input("Enter your task :").capitalize()
+        while True:
+            task_title = input("Enter your task: ").strip()
+            if task_title:
+                task_title = task_title.capitalize()
+                break
+            print("Task title cannot be empty!")
+
         task_description = input("Enter description (optional): ").capitalize()
 
         task = Task(task_title, task_description)
@@ -81,6 +87,24 @@ while user_selection != 8 :
                 print("No task fount!")
         else:
             print("Task list is empty!")
+
+    # Complete task
+    elif user_selection == 5:
+        if user_task.tasks:
+            print_tasks(user_task.tasks)
+            try:
+                comp_task = int(input("Enter the number of task that you complete:"))
+            except ValueError:
+                print("Invalid input!")
+            
+            result = user_task.complete_task(comp_task)
+            if result == True:
+                print("The status of task changed.")
+            else:
+                print("Invalid number choice!")
+        else:
+            print("Task list is empty!")
+
 
     elif user_selection == 8:
         print("Exit Program.")
