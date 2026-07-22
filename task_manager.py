@@ -45,3 +45,16 @@ class TaskManager:
         else:
             return False
 
+    # Delete task function 
+    def delete_task(self, del_task_num):
+        if 1<= del_task_num <= len(self.tasks):
+            ask = input("Are you sure for delete this task (y/n):").lower()
+            if ask == "y" :
+                self.tasks.pop(del_task_num - 1)
+                return True
+            elif ask == "n":
+                return False
+            else :
+                return "Invalid answer"
+        return "Invalid number"
+

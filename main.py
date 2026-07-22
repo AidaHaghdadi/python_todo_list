@@ -105,7 +105,26 @@ while user_selection != 8 :
         else:
             print("Task list is empty!")
 
+    elif user_selection == 7:
+        if user_task.tasks:
+            print_tasks(user_task.tasks)
+            try:
+                del_task_num = int(input("Enter the number of task that you want to delete:"))
+            except ValueError:
+                print("Invalid input!")
+            
+            result = user_task.delete_task(del_task_num)
+            if result == True:
+                print("Task deleted.")
+            elif result == False:
+                print("Operation cancelled.")
+            elif result == "Invalid answer":
+                print("Invalid answer! please choice 'y' or 'n'")
+            else:
+                print("Invalid choice number!")
 
+        else:
+            print
     elif user_selection == 8:
         print("Exit Program.")
 
