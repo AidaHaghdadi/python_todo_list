@@ -9,19 +9,23 @@ class TaskManager:
     # Show list of tasks function
     def show_tasks(self):
         return self.tasks
-    
+
     # Edit task function
     def edit_task(self, task_number, new_title, new_description):
         if 1<= task_number <= len(self.tasks):
             task_for_edit = self.tasks[task_number - 1]
             if new_title:
                 task_for_edit.title = new_title
-            if new_description:
+
+            if new_description == ("clear".capitalize()):
+                task_for_edit.description = ""
+            elif new_description:
                 task_for_edit.description = new_description
+
             return True
         else:
             return False
-    
+
     # Search task function
     def search_task(self, task_title):
         result = []
@@ -30,7 +34,7 @@ class TaskManager:
             if task_title == task.title:
                 result.append(task)
         return result
-    
+
     # Complete task function
     def complete_task(self, comp_task):
         if 1<= comp_task <= len(self.tasks):
@@ -56,17 +60,17 @@ class TaskManager:
 
         self.tasks[task1 - 1], self.tasks[task2 - 1] = self.tasks[task2 - 1], self.tasks[task1 - 1]
         return True
-            
+
     # Delete task function 
     def delete_task(self, del_task_num):
         if 1<= del_task_num <= len(self.tasks):
-            ask = input("Are you sure for delete this task (y/n):").lower()
-            if ask == "y" :
-                self.tasks.pop(del_task_num - 1)
-                return True
-            elif ask == "n":
-                return False
-            else :
-                return "Invalid answer"
-        return "Invalid number"
-
+            while True:
+                ask = input("Are you sure for delete this task (y/n):").lower()
+                if ask == "y" :
+                    self.tasks.pop(del_task_num - 1)
+                    return True
+                if ask == "n":
+                    return False
+                else:
+                    print("Invalid answer! please choice 'y' or 'n'")
+        return

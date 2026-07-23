@@ -13,11 +13,9 @@ def show_menu():
     print("8-Exit")
 
 def print_tasks(tasks):
-    result = user_task.show_tasks()
-
-    if result:
+    if tasks:
         print("\nTask List:")
-        for index, task in enumerate(result):
+        for index, task in enumerate(tasks):
             print(f"{index + 1}. {task}")
         return True
     else:
@@ -64,7 +62,7 @@ while user_selection != 8 :
                 continue
 
             new_title = input("New title (leave blank to keep current):").capitalize()
-            new_description = input("New description (leave blank to keep current):").capitalize()
+            new_description = input("New description (leave blank to keep current or type 'clear' if you want to remove description):").capitalize()
 
             result = user_task.edit_task(task_number, new_title, new_description)
             if result == True:
@@ -151,8 +149,6 @@ while user_selection != 8 :
                 print("Task deleted.")
             elif result == False:
                 print("Operation cancelled.")
-            elif result == "Invalid answer":
-                print("Invalid answer! please choice 'y' or 'n'")
             else:
                 print("Invalid choice number!")
 
