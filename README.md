@@ -77,15 +77,6 @@ python main.py
 * Object-Oriented Programming (OOP)
 * Git
 
-## 🚀 Future Improvements
-
-* Save tasks using JSON
-* Graphical User Interface (Tkinter)
-* SQLite database support
-* Due dates and priorities
-* Task categories
-* Sorting and filtering
-
 ## 📚 Learning Goals
 
 This project was developed to practice:
