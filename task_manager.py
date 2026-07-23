@@ -45,6 +45,18 @@ class TaskManager:
         else:
             return False
 
+    # Move task function for change priority
+    def move_task(self, task1, task2):
+        if not (1 <= task1 <= len(self.tasks)):
+            return "Invalid task1"
+        if not (1 <= task2 <= len(self.tasks)):
+            return "Invalid task2"
+        if task1 == task2:
+            return "same"
+
+        self.tasks[task1 - 1], self.tasks[task2 - 1] = self.tasks[task2 - 1], self.tasks[task1 - 1]
+        return True
+            
     # Delete task function 
     def delete_task(self, del_task_num):
         if 1<= del_task_num <= len(self.tasks):

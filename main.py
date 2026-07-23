@@ -101,10 +101,43 @@ while user_selection != 8 :
             if result == True:
                 print("The status of task changed.")
             else:
-                print("Invalid number choice!")
+                print("Invalid choice number!")
         else:
             print("Task list is empty!")
 
+    # Move task
+    elif user_selection == 6:
+        if user_task.tasks:
+            print_tasks(user_task.tasks)
+            while True:
+                try:
+                    task1 = int(input("Enter the number of the task whose priority you want to change: "))
+                    break
+                except ValueError:
+                    print("Invalid input!")
+                    continue
+            while True:
+                try:
+                    task2 = int(input("With which task should it be changed (enter its number):"))
+                    break
+                except ValueError:
+                    print("Invalid input!")
+            
+            result = user_task.move_task(task1, task2)
+            
+            if result == True:
+                print("Tasks changed")
+            elif result == "Invalid task1":
+                print("Invalid choice number for first task!")
+            elif result == "Invalid task2":
+                print("Invalid choice number for second task!")
+            elif result == "same":
+                print("You selected the same task.")
+
+        else:
+            print("Task list is empty!")
+
+    # Delete task
     elif user_selection == 7:
         if user_task.tasks:
             print_tasks(user_task.tasks)
@@ -124,7 +157,8 @@ while user_selection != 8 :
                 print("Invalid choice number!")
 
         else:
-            print
+            print("Task list is empty!")
+
     elif user_selection == 8:
         print("Exit Program.")
 
