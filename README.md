@@ -4,7 +4,7 @@ A command-line To-Do List application built with **Python** using **Object-Orien
 
 This project started as a simple procedural application and was later completely refactored into a modular OOP design to improve maintainability, scalability, and code organization.
 
-## ✨ Features
+## Features
 
 * ➕ Add new tasks
 * 📋 Display all tasks
@@ -29,7 +29,7 @@ This project started as a simple procedural application and was later completely
 * **task.py** – `Task` class
 * **task_manager.py** – `TaskManager` class and task management logic
 
-## 🧱 Object-Oriented Design
+## Object-Oriented Design
 
 ### Task
 
@@ -71,22 +71,13 @@ Run the application:
 python main.py
 ```
 
-## 🛠 Technologies
+## Technologies
 
 * Python 3
 * Object-Oriented Programming (OOP)
 * Git
 
-## 🚀 Future Improvements
-
-* Save tasks using JSON
-* Graphical User Interface (Tkinter)
-* SQLite database support
-* Due dates and priorities
-* Task categories
-* Sorting and filtering
-
-## 📚 Learning Goals
+## Learning Goals
 
 This project was developed to practice:
 
