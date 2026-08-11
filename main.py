@@ -164,6 +164,7 @@ while user_selection != 8 :
                 del_task_num = int(input("Enter the number of task that you want to delete:"))
             except ValueError:
                 print("Invalid input!")
+                continue
             
             result = user_task.delete_task(del_task_num)
             if result == True:
