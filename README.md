@@ -1,96 +1,86 @@
-# 📝 To-Do List Manager (Python OOP)
+# Python To-Do List
 
-A command-line To-Do List application built with **Python** using **Object-Oriented Programming (OOP)** principles.
-
-This project started as a simple procedural application and was later completely refactored into a modular OOP design to improve maintainability, scalability, and code organization.
+A simple command-line To-Do List application built with Python and Object-Oriented Programming (OOP).
 
 ## Features
 
-* ➕ Add new tasks
-* 📋 Display all tasks
-* ✏️ Edit task title and description
-* 🔍 Search tasks by title
-* ✅ Mark tasks as completed
-* 🔄 Change task priority by swapping tasks
-* 🗑️ Delete tasks with confirmation
-* 📝 Optional task descriptions
-* ✔️ Input validation for user interactions
+* Add new tasks
+* Display all tasks
+* Edit tasks
+* Search tasks by title
+* Complete tasks
+* Delete tasks with confirmation
+* Change task priority by moving tasks
+* Add optional task descriptions
+* Save tasks automatically using JSON
+* Load saved tasks when the application starts
+* Keep task completion status after restarting the program
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
-.
+python_todo_list/
+│
 ├── main.py
 ├── task.py
-└── task_manager.py
+├── task_manager.py
+├── storage.py
+├── tasks.json
+└── README.md
 ```
 
-* **main.py** – User interface and menu system
-* **task.py** – `Task` class
-* **task_manager.py** – `TaskManager` class and task management logic
+## How It Works
 
-## Object-Oriented Design
+The application uses Python objects to manage tasks during runtime.
 
-### Task
+Before saving tasks, each `Task` object is converted into a dictionary using the `to_dict()` method. The dictionaries are then stored in a JSON file using Python's built-in `json` module.
 
-Represents a single task with the following attributes:
+When the application starts, the JSON data is loaded using `json.load()`. The dictionaries are then converted back into `Task` objects using the `from_dict()` method.
 
-* Title
-* Description
-* Completion status
-
-### TaskManager
-
-Responsible for managing tasks, including:
-
-* Adding
-* Displaying
-* Editing
-* Searching
-* Completing
-* Moving
-* Deleting
-
-## ▶️ How to Run
-
-Clone the repository:
-
-```bash
-git clone <repository-url>
+```text
+Task Object
+    ↓
+to_dict()
+    ↓
+Dictionary
+    ↓
+json.dump()
+    ↓
+tasks.json
 ```
 
-Navigate to the project folder:
+When loading:
 
-```bash
-cd <project-folder>
+```text
+tasks.json
+    ↓
+json.load()
+    ↓
+Dictionary
+    ↓
+from_dict()
+    ↓
+Task Object
 ```
 
-Run the application:
+## Technologies
+
+* Python
+* Object-Oriented Programming (OOP)
+* JSON
+* Git & GitHub
+
+## How to Run
+
+Clone the repository and run:
 
 ```bash
 python main.py
 ```
 
-## Technologies
+The application will automatically load previously saved tasks from `tasks.json`.
 
-* Python 3
-* Object-Oriented Programming (OOP)
-* Git
-
-## Learning Goals
-
-This project was developed to practice:
-
-* Python fundamentals
-* Object-Oriented Programming
-* Modular project structure
-* Clean code principles
-* Git and GitHub workflow
-
----
-
-**Version:** v2.0 (OOP Refactor)
 
 ## Author
 
-**Aida Haghdadi**
+Aida Haghdadi
