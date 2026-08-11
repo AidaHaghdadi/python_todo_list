@@ -15,3 +15,18 @@ class Task:
         if self.is_completed:
             return "Completed"
         return "Pending"
+
+    # python object -> dictionary function
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "description": self.description,
+            "is_completed": self.is_completed
+        }
+        
+    # dictionary -> python object function
+    @classmethod
+    def from_dict(cls, data):
+        task = cls(data["title"], data["description"])
+        task.is_completed = data["is_completed"]
+        return task

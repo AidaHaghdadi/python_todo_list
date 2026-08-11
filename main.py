@@ -1,5 +1,7 @@
 from task import Task
 from task_manager import TaskManager
+from storage import save_tasks
+from storage import save_tasks, load_tasks
 
 def show_menu():
     print("\nMenu:")
@@ -23,6 +25,7 @@ def print_tasks(tasks):
         return False
 
 user_task = TaskManager()
+user_task.tasks = load_tasks()
 user_selection = None
 while user_selection != 8 :
     show_menu()
@@ -45,8 +48,9 @@ while user_selection != 8 :
 
         task = Task(task_title, task_description)
         user_task.add_task(task)
+        save_tasks(user_task.tasks)
         print("Task added!")
-
+        
     # Show task
     elif user_selection == 2:
         print_tasks(user_task.tasks)
@@ -65,11 +69,18 @@ while user_selection != 8 :
             new_description = input("New description (leave blank to keep current or type 'clear' if you want to remove description):").capitalize()
 
             result = user_task.edit_task(task_number, new_title, new_description)
-            if result == True:
-                print("Task updated successfully.")
 
+            result = user_task.edit_task(
+                task_number,
+                new_title,
+                new_description
+            )
+
+            if result:
+                save_tasks(user_task.tasks)
+                print("Task updated successfully.")
             else:
-                print("Invalid Choice Number!")
+                print("Invalid choice number!")
         else:
             print("Task list is empty!")
 
@@ -90,16 +101,25 @@ while user_selection != 8 :
     elif user_selection == 5:
         if user_task.tasks:
             print_tasks(user_task.tasks)
+
             try:
                 comp_task = int(input("Enter the number of task that you complete:"))
             except ValueError:
                 print("Invalid input!")
-            
+                continue
+
             result = user_task.complete_task(comp_task)
+
             if result == True:
-                print("The status of task changed.")
+                save_tasks(user_task.tasks)
+                print("Task completed successfully.")
+
+            elif result == "Already complete":
+                print("Task is already complete.")
+
             else:
                 print("Invalid choice number!")
+
         else:
             print("Task list is empty!")
 
@@ -124,6 +144,7 @@ while user_selection != 8 :
             result = user_task.move_task(task1, task2)
             
             if result == True:
+                save_tasks(user_task.tasks)
                 print("Tasks changed")
             elif result == "Invalid task1":
                 print("Invalid choice number for first task!")
@@ -146,7 +167,8 @@ while user_selection != 8 :
             
             result = user_task.delete_task(del_task_num)
             if result == True:
-                print("Task deleted.")
+                save_tasks(user_task.tasks)
+                print("Task deleted successfully.")
             elif result == False:
                 print("Operation cancelled.")
             else:
